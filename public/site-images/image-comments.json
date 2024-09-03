@@ -1,8 +1,175 @@
 {
-	"1999-2000/1999-03-2000": [
+	"01fotos/2000/02_voormrt_2000/25_feb_2000": [
 		{
-			"src": "1122681.jpg",
-			"description": "Details of March 2000"
+			"src": "roda-psv25_februari_2000a.jpg",
+			"description": "Doorkijkje op noord."
+		},
+		{
+			"src": "roda-psv25_februari_2000b.jpg",
+			"description": "De PSV vlag."
+		},
+		{
+			"src": "roda-psv25_februari_2000c.jpg",
+			"description": "Carnavalesk begin."
+		},
+		{
+			"src": "roda-psv25_februari_2000d.jpg",
+			"description": "De Lawal-vlag op zuid."
+		},
+		{
+			"src": "roda-psv25_februari_2000e.jpg",
+			"description": "Veel ME na de wedstrijd."
+		},
+		{
+			"src": "roda-psv25_februari_2000f.jpg",
+			"description": "Rudge in de kantine."
+		},
+		{
+			"src": "roda-psv25_februari_2000g.jpg",
+			"description": "Valgaeren in de kantine."
+		},
+		{
+			"src": "roda-psv25_februari_2000h.jpg",
+			"description": "Peeters in de kantine."
+		},
+		{
+			"src": "roda-psv25_februari_2000i.jpg",
+			"description": "Onze Belgische vrienden."
+		},
+		{
+			"src": "roda-psv25_februari_2000j.jpg",
+			"description": "Onze Belgische vrienden 2."
+		},
+		{
+			"src": "roda-psv25_februari_2000k.jpg",
+			"description": "Senden, Van der Luer, Van Dessel."
+		},
+		{
+			"src": "roda-psv25_februari_2000l.jpg",
+			"description": "Belgen gaan uit de bol."
+		},
+		{
+			"src": "roda-psv25_februari_2000m.jpg",
+			"description": "Van Dessel in de kantine."
+		}
+	],
+	"01fotos/2000/02_voormrt_2000/19_feb_2000": [
+		{
+			"src": "vriesvak.jpg",
+			"description": "Het vriesvak van het Bossche ECCO-stadionnetje." 
+		},
+		{
+			"src": "vriesvak2.jpg",
+			"description": "Nogmaals het ijs- en ijskoude vriesvak." 
+		},
+		{
+			"src": "kalk1.jpg",
+			"description": "Er moesten nog snel kalklijnen worden getrokken."
+		},
+		{
+			"src": "kalk2.jpg",
+			"description": "De kalkman leek niet erg nuchter"
+		},
+		{
+			"src": "kalklijnen.jpg",
+			"description": "De kalkman haalde de TV."
+		},
+		{
+			"src": "wirwar.jpg",
+			"description": "Druk, druk, druk!"
+		},
+		{
+			"src": "zafarinscoort1-0.jpg",
+			"description": "Zafarin scoort 0-1 (25)."
+		},
+		{
+			"src": "domme_ballenjongen.jpg",
+			"description": "Domme ballenjongen."
+		},
+		{
+			"src": "denbosch-roda19 feb_2000i.jpg",
+			"description": "Valgaeren heeft zojuist een kans op 0-2 verprutst."
+		},
+		{
+			"src": "denbosch-roda19 feb_2000j.jpg",
+			"description": "Doelpunt Uneken uit een vrijetrap (68)."
+		},
+		{
+			"src": "denbosch-roda19 feb_2000k.jpg",
+			"description": "Geknoei in de verdediging stelde Van de Hoorn in de gelegenheid 2-1 te scoren (75)."
+		},
+		{
+			"src": "denbosch-roda19 feb_2000l.jpg",
+			"description": "Bijna 3-1"
+		},
+		{
+			"src": "denbosch-roda19 feb_2000m.jpg",
+			"description": "Eric van der Luer legt de bal uit een hoekschop op de kop van Bob Peeters die 2-2 scoort (89)"
+		},
+		{
+			"src": "denbosch-roda19 feb_2000e.jpg",
+			"description": "Uitgeput!"
+		}
+	],
+	"01fotos/2000/02_voormrt_2000/07_feb_2000": [
+		{
+			"src": "cairo.jpg",
+			"description": "Cairo maakt de 2-1."
+		}
+	],
+	"01fotos/2000/02_voormrt_2000/11_dec_1999": [
+		{
+			"src": "rod-gra.jpg",
+			"description": "Duel."
+		}
+	],
+	"01fotos/2000/02_voormrt_2000/04_dec_1999": [
+		{
+			"src": "psv1.jpg",
+			"description": "Publiek 1."
+		},
+		{
+			"src": "psv2.jpg",
+			"description": "Publiek 2."
+		},
+		{
+			"src": "psv3.jpg",
+			"description": "Publiek 3."
+		},
+		{
+			"src": "psv4.jpg",
+			"description": "Publiek 4."
+		},
+		{
+			"src": "psv5.jpg",
+			"description": "Publiek 5."
+		},
+		{
+			"src": "nilis.jpg",
+			"description": "Luc Nilis viert zijn goal."
+		}
+	],
+	"01fotos/2000/02_voormrt_2000/07_nov_1999": [
+		{
+			"src": "goal.jpg",
+			"description": "De bal was er WEER over!"
+		},
+		{
+			"src": "p2p_nov1.jpg",
+			"description": "v.d. Luer met de 'vroege' 1-0."
+		},
+		{
+			"src": "p2p_nov2.jpg",
+			"description": "Peeters verdedigt mee."
+		},
+		{
+			"src": "p2p_nov3.jpg",
+			"description": "Peeters; dreigend als aanvaller."
+		},
+		{
+			"src": "p2p_nov4.jpg",
+			"description": "Haaren; stijlvolle concentratie."
 		}
 	]
+
 }

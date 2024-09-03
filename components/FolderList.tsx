@@ -14,6 +14,8 @@ interface SubfolderData {
     folderPath: string;
     subfolders: SubfolderData[];
     images: { src: string; comments: ImageComment[] }[];
+    home?: string;
+    out?: string;
 }
 
 interface FolderData extends SubfolderData { }
@@ -56,7 +58,9 @@ const FolderList: React.FC = () => {
                         className="text-lg font-semibold mb-2 cursor-pointer"
                         onClick={() => handleFolderClick(folder)}
                     >
-                        {folder.folder} {/* Display the folder name */}
+                        {folder.folder} <br/>
+                        {folder.home && <span>Thuis: {folder.home}</span>} <br/>
+                        {folder.out && <span>Uit: {folder.out}</span> } <br/>                   
                     </h3>
                     <div className="flex gap-2 mb-2">
                         {folder.images.slice(0, 3).map((image, index) => {
@@ -102,14 +106,14 @@ const FolderList: React.FC = () => {
                     <div className="grid grid-cols-3 gap-4">
                         {currentFolder.images.length > 0 ?
                             currentFolder.images.map((image, index) => (
-                                <div key={index} className="relative">
+                                <div key={index} className="relative group">
                                     <img
                                         src={image.src}
                                         alt={`Image ${index}`}
                                         className="w-full h-auto object-cover"
                                     />
                                     {image.comments && image.comments.length > 0 && (
-                                        <div className="absolute bottom-0 left-0 bg-gray-800 text-white p-2 opacity-75 w-full">
+                                        <div className="absolute bottom-0 left-0 bg-gray-800 text-white p-2 opacity-0 group-hover:opacity-75 w-full">
                                             {image.comments.map((comment, idx) => (
                                                 <p key={idx} className="text-sm">
                                                     {comment.description}
