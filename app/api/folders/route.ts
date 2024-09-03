@@ -11,6 +11,8 @@ interface Folder {
     subfolders: Folder[];
     images: { src: string; comments: { src: string; description: string }[] }[];
     order: number;
+    home?: string;
+    out?: string;
 }
 
 /**
@@ -20,6 +22,9 @@ interface FolderOrder {
     path: string;
     name: string;
     order: number;
+    subFolders?: FolderOrder[];
+    home?: string;
+    out?: string;
 }
 
 const siteImagesFolderPath = path.join(process.cwd(), 'public', 'site-images');
@@ -75,45 +80,34 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
  * @param foldersOrder - The ordered list of folders from the JSON file.
  * @returns A sorted array of folder objects with their subfolders and images.
  */
-function getFolders(foldersOrder: FolderOrder[]): Folder[] {
+function getFolders(foldersOrder: FolderOrder[], parentPath = ''): Folder[] {
     const folderMap = new Map<string, Folder>();
     const comments = getImageComments(); // Load comments
 
     // Initialize folders map
     foldersOrder.forEach((folderOrder) => {
-        const folderPath = path.join(siteImagesFolderPath, folderOrder.path);
+        const folderPath = path.join(siteImagesFolderPath, parentPath, folderOrder.path);
         if (fs.existsSync(folderPath) && fs.statSync(folderPath).isDirectory()) {
+            const subfolders = folderOrder.subFolders
+                ? getFolders(folderOrder.subFolders, path.join(parentPath, folderOrder.path))
+                : [];
+
             folderMap.set(folderOrder.path, {
                 folder: folderOrder.name || path.basename(folderPath),
-                folderPath: folderOrder.path,
-                subfolders: [],
+                folderPath: path.join(parentPath, folderOrder.path),
+                subfolders: subfolders,
                 images: getImagesFromFolder(folderPath, comments),
-                order: folderOrder.order
+                order: folderOrder.order,
+                home: folderOrder.home,
+                out: folderOrder.out
             });
         }
     });
 
-    // Build the folder structure
-    const folders: Folder[] = [];
-    folderMap.forEach((folderData, folderPath) => {
-        const parentPath = path.dirname(folderPath);
-        if (parentPath !== '.' && folderMap.has(parentPath)) {
-            folderMap.get(parentPath)!.subfolders.push(folderData);
-        } else {
-            folders.push(folderData);
-        }
-    });
-
-    // Sort main folders and subfolders by their order
-    const sortFolders = (folders: Folder[]): Folder[] => folders
-        .sort((a, b) => a.order - b.order)
-        .map(folder => ({
-            ...folder,
-            subfolders: sortFolders(folder.subfolders)
-        }));
-
-    return sortFolders(folders);
+    // Convert the map to an array and sort it by order
+    return Array.from(folderMap.values()).sort((a, b) => a.order - b.order);
 }
+
 
 
 /**
