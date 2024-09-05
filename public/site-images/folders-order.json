@@ -51,7 +51,35 @@
                             "order": 6,
                             "home": "Roda JC",
                             "out": "FC Den Bosch"
-                        }
+                        },
+						{
+							"path": "24_okt_1999",
+							"name": "24 okt 1999",
+							"order": 7,
+							"home": "Roda JC",
+							"out": "Vitesse"
+						},
+						{
+							"path": "15_okt_1999",
+							"name": "15 okt 1999",
+							"order": 8,
+							"home": "Feyenoord",
+							"out": "Roda JC"
+						},
+						{
+							"path": "11_okt_1999",
+							"name": "11 okt 1999",
+							"order": 9,
+							"home": "Sparta",
+							"out": "Roda JC"
+						},
+						{
+							"path": "26_sep_1999",
+							"name": "26 sep 1999",
+							"order": 10,
+							"home": "Roda JC",
+							"out": "Fortuna Sittard"
+						}
 					]
 				},
 				{ "path": "03_mrt_2000", "name": "Maart 2000", "order": 2 },
