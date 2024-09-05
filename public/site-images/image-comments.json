@@ -170,6 +170,30 @@
 			"src": "p2p_nov4.jpg",
 			"description": "Haaren; stijlvolle concentratie."
 		}
+	],
+	"01fotos/2000/02_voormrt_2000/24_okt_1999": [
+		{
+			"src": "rjc-vit.jpg",
+			"description": "De bal was over de lijn!!"
+		}
+	],
+	"01fotos/2000/02_voormrt_2000/15_okt_1999": [
+		{
+			"src": "rode-fey2.jpg",
+			"description": "Wie heeft RJC vermoord?"
+		}
+	],
+	"01fotos/2000/02_voormrt_2000/11_okt_1999": [
+		{
+			"src": "stroeve.jpg",
+			"description": "Stroeve en Rudge willen bal."
+		}
+	],
+	"01fotos/2000/02_voormrt_2000/25_sep_1999": [
+		{
+			"src": "hofland.jpg",
+			"description": "Peeters en Hofland in duel."
+		}
 	]
 
 }
