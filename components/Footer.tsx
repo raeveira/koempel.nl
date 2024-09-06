@@ -20,7 +20,7 @@ export default function Footer() {
                         <h6 className="font-bold text-lg">Links</h6>
                     </div>
                     <ul className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <li><Link href="/fotos" className="hover:underline">Foto's</Link></li>
+                        <li><Link href="/fotos" className="hover:underline">Foto&apos;s</Link></li>
                         <li><Link href="/audio" className="hover:underline">Audio</Link></li>
                         <li><Link href="/overige" className="hover:underline">Overige</Link></li>
                         <li><Link href="/verslagen" className="hover:underline">Verslagen</Link></li>

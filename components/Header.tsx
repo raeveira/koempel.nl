@@ -28,7 +28,7 @@ export default function Header() {
                             <NavigationMenuLink href="/" className="hover:underline">Home</NavigationMenuLink>
                         </NavigationMenuItem>
                         <NavigationMenuItem>
-                            <NavigationMenuLink href="/fotos" className="hover:underline">Foto's</NavigationMenuLink>
+                            <NavigationMenuLink href="/fotos" className="hover:underline">Foto&apos;s</NavigationMenuLink>
                         </NavigationMenuItem>
                         <NavigationMenuItem>
                             <NavigationMenuLink href="/audio" className="hover:underline">Audio</NavigationMenuLink>
