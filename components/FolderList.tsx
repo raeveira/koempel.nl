@@ -58,13 +58,13 @@ const FolderList: React.FC = () => {
                         className="text-lg font-semibold mb-2 cursor-pointer"
                         onClick={() => handleFolderClick(folder)}
                     >
-                        {folder.folder} <br/>
-                        {folder.home && <span>Thuis: {folder.home}</span>} <br/>
-                        {folder.out && <span>Uit: {folder.out}</span> } <br/>                   
+                        {folder.folder} <br />
+                        {folder.home && (<><span>Thuis: {folder.home}</span><br /></>)}
+                        {folder.out && (<><span>Uit: {folder.out}</span><br /></>)}
                     </h3>
                     <div className="flex gap-2 mb-2">
                         {folder.images.slice(0, 3).map((image, index) => {
-                           return (
+                            return (
                                 <img
                                     key={index}
                                     src={image.src}
