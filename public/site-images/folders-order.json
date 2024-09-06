@@ -87,6 +87,12 @@
 				{ "path": "05_mei_2000", "name": "Mei 2000", "order": 4 },
 				{ "path": "06_jun_2000", "name": "Juni 2000", "order": 5 }
 			]
+		},
+		{
+			"path": "01fotos/2001",
+			"name": "2001",
+			"order": 2,
+			"subFolders": []
 		}
 	]
 }
