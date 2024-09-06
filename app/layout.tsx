@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import NextTopLoader from 'nextjs-toploader';
+import Footer from '@/components/Footer'
+import Header from '@/components/Header'
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,7 +31,9 @@ export default function RootLayout({
           speed={200}
           shadow="0 0 10px #2299DD,0 0 5px #2299DD"
         />
+        <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );
