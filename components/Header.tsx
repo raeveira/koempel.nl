@@ -12,7 +12,6 @@ import {
     NavigationMenuLink,
     NavigationMenuList,
     NavigationMenuTrigger,
-    NavigationMenuViewport,
     navigationMenuTriggerStyle
 } from "@/components/ui/navigation-menu";
 
@@ -99,8 +98,6 @@ export default function Header() {
                             </NavigationMenuContent>
                         </NavigationMenuItem>
                     </NavigationMenuList>
-                    <NavigationMenuIndicator />
-                    <NavigationMenuViewport />
                 </NavigationMenu>
             </div>
         </header>
