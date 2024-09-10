@@ -1,7 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 
 interface ImageComment {
@@ -16,29 +15,19 @@ interface SubfolderData {
     images: { src: string; comments: ImageComment[] }[];
     home?: string;
     out?: string;
+    order?: number;
 }
 
-interface FolderData extends SubfolderData { }
+export interface FolderData extends SubfolderData { }
 
-const FolderList: React.FC = () => {
-    const [foldersData, setFoldersData] = useState<FolderData[]>([]);
+// Correctly define the props type
+interface FolderListProps {
+    foldersData: FolderData[];
+}
+
+const FolderList: React.FC<FolderListProps> = ({ foldersData }) => {
     const [currentFolder, setCurrentFolder] = useState<FolderData | null>(null);
     const [previousFolder, setPreviousFolder] = useState<FolderData | null>(null);
-    const [error, setError] = useState<string | null>(null);
-
-    useEffect(() => {
-        async function fetchFoldersData() {
-            try {
-                const response = await axios.get('/api/folders');
-                setFoldersData(response.data);
-            } catch (err) {
-                console.error('Failed to fetch folders data:', err);
-                setError('Failed to fetch folders data');
-            }
-        }
-
-        fetchFoldersData();
-    }, []);
 
     const handleFolderClick = (folder: FolderData) => {
         setPreviousFolder(currentFolder);
@@ -52,19 +41,19 @@ const FolderList: React.FC = () => {
 
     const renderFolders = (folders: FolderData[]) => (
         <div className="grid grid-cols-3 gap-4">
-            {folders.map((folder) => (
-                <div key={folder.folderPath} className="border p-4">
-                    <h3
-                        className="text-lg font-semibold mb-2 cursor-pointer"
-                        onClick={() => handleFolderClick(folder)}
-                    >
-                        {folder.folder} <br />
-                        {folder.home && (<><span>Thuis: {folder.home}</span><br /></>)}
-                        {folder.out && (<><span>Uit: {folder.out}</span><br /></>)}
-                    </h3>
-                    <div className="flex gap-2 mb-2">
-                        {folder.images.slice(0, 3).map((image, index) => {
-                            return (
+            {folders.length > 0 ? (
+                folders.map((folder) => (
+                    <div key={folder.folderPath} className="border p-4">
+                        <h3
+                            className="text-lg font-semibold mb-2 cursor-pointer"
+                            onClick={() => handleFolderClick(folder)}
+                        >
+                            {folder.folder} <br />
+                            {folder.home && (<><span>Thuis: {folder.home}</span><br /></>)}
+                            {folder.out && (<><span>Uit: {folder.out}</span><br /></>)}
+                        </h3>
+                        <div className="flex gap-2 mb-2">
+                            {folder.images.slice(0, 3).map((image, index) => (
                                 <img
                                     key={index}
                                     src={image.src}
@@ -73,26 +62,26 @@ const FolderList: React.FC = () => {
                                     height={96}
                                     className="w-24 h-24 object-cover"
                                 />
-                            )
-                        })}
+                            ))}
+                        </div>
+                        {folder.subfolders.length > 0 && (
+                            <p
+                                className="text-blue-500 hover:underline hover:cursor-pointer"
+                                onClick={() => handleFolderClick(folder)}
+                            >
+                                Contains {folder.subfolders.length} subfolders
+                            </p>
+                        )}
                     </div>
-                    {folder.subfolders.length > 0 && (
-                        <p
-                            className="text-blue-500 hover:underline hover:cursor-pointer"
-                            onClick={() => handleFolderClick(folder)}
-                        >
-                            Contains {folder.subfolders.length} subfolders
-                        </p>
-                    )}
-                </div>
-            ))}
+                ))
+            ) : (
+                <p>No folders available</p>
+            )}
         </div>
     );
 
     return (
         <div className="p-4">
-            {error && <p className="text-red-500">{error}</p>}
-            {!foldersData.length && !error && <p>Loading folders...</p>}
             {currentFolder ? (
                 <>
                     <Button

@@ -68,6 +68,7 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
     try {
         const foldersOrder = getFoldersOrder();
         const folders = getFolders(foldersOrder);
+        console.log(folders);
         return NextResponse.json(folders);
     } catch (error) {
         console.error('Error fetching folders:', error);
