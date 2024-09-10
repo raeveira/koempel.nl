@@ -81,7 +81,7 @@ const FolderList: React.FC<FolderListProps> = ({ foldersData }) => {
                     </div>
                 ))
             ) : (
-                <p>Geen mappen beschikbaar</p>
+                <p className='text-white'>Geen mappen beschikbaar</p>
             )}
         </div>
     );
@@ -132,7 +132,7 @@ const FolderList: React.FC<FolderListProps> = ({ foldersData }) => {
                                             </div>
                                         )}
                                     </div>
-                                )) : <p>Geen afbeeldingen beschikbaar</p>}
+                                )) : <p className='text-white'>Geen afbeeldingen beschikbaar</p>}
                         </div>
                     </div>
 

@@ -31,7 +31,7 @@ export default function UpcomingMatches() {
     return (
         <section className="py-12">
             <div className="container mx-auto px-4">
-                <h2 className="text-3xl font-bold mb-6">Upcoming Matches</h2>
+                <h2 className="text-3xl font-bold mb-6">Aankomende wedstrijden</h2>
                 <div className="space-y-4">
                     {matches.map((match: any, i: any) => (
                         <Card key={i}>
