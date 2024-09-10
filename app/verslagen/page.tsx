@@ -64,9 +64,49 @@ const contentData: ContentCategory[] = [
       { title: "05 mei 2001 Roda JC tegen PSV", content: "Verslag van de wedstrijd..." },
       { title: "28 apr 2001 FC Utrecht tegen Roda JC", content: "Verslag van de wedstrijd..." },
       { title: "22 apr 2001 Roda JC tegen Vitesse", content: "Verslag van de wedstrijd..." },
-      // ... (other matches)
     ]
   },
+  {
+    name: "2001/2002",
+    items: [
+      { title: "15 mei 2001 Roda JC tegen Feyenoord", content: "Verslag van de wedstrijd..." },
+      { title: "10 mei 2001 Ajax tegen Roda JC", content: "Verslag van de wedstrijd..." },
+      { title: "05 mei 2001 Roda JC tegen PSV", content: "Verslag van de wedstrijd..." },
+      { title: "28 apr 2001 FC Utrecht tegen Roda JC", content: "Verslag van de wedstrijd..." },
+      { title: "22 apr 2001 Roda JC tegen Vitesse", content: "Verslag van de wedstrijd..." },
+    ]
+  },
+  {
+    name: "2002/2003",
+    items: [
+      { title: "15 mei 2001 Roda JC tegen Feyenoord", content: "Verslag van de wedstrijd..." },
+      { title: "10 mei 2001 Ajax tegen Roda JC", content: "Verslag van de wedstrijd..." },
+      { title: "05 mei 2001 Roda JC tegen PSV", content: "Verslag van de wedstrijd..." },
+      { title: "28 apr 2001 FC Utrecht tegen Roda JC", content: "Verslag van de wedstrijd..." },
+      { title: "22 apr 2001 Roda JC tegen Vitesse", content: "Verslag van de wedstrijd..." },
+    ]
+  },
+  {
+    name: "2003/2004",
+    items: [
+      { title: "15 mei 2001 Roda JC tegen Feyenoord", content: "Verslag van de wedstrijd..." },
+      { title: "10 mei 2001 Ajax tegen Roda JC", content: "Verslag van de wedstrijd..." },
+      { title: "05 mei 2001 Roda JC tegen PSV", content: "Verslag van de wedstrijd..." },
+      { title: "28 apr 2001 FC Utrecht tegen Roda JC", content: "Verslag van de wedstrijd..." },
+      { title: "22 apr 2001 Roda JC tegen Vitesse", content: "Verslag van de wedstrijd..." },
+    ]
+  },
+  {
+    name: "2004/2005",
+    items: [
+      { title: "15 mei 2001 Roda JC tegen Feyenoord", content: "Verslag van de wedstrijd..." },
+      { title: "10 mei 2001 Ajax tegen Roda JC", content: "Verslag van de wedstrijd..." },
+      { title: "05 mei 2001 Roda JC tegen PSV", content: "Verslag van de wedstrijd..." },
+      { title: "28 apr 2001 FC Utrecht tegen Roda JC", content: "Verslag van de wedstrijd..." },
+      { title: "22 apr 2001 Roda JC tegen Vitesse", content: "Verslag van de wedstrijd..." },
+    ]
+  },
+
 ]
 
 export default function KPDOverige() {
