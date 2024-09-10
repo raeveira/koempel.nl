@@ -15,17 +15,17 @@ export const latestNews: latestNewsType[] = [
         href: "/news/1"
     },
     {
-        title: "News 2",
-        shortContent: "SHORTCONTENT",
+        title: "",
+        shortContent: "",
         date: new Date(2024, 6, 25),
-        content: "CONTENT",
+        content: "",
         href: "/news/2"
     },
     {
-        title: "News 3",
-        shortContent: "SHORTCONTENT",
+        title: "",
+        shortContent: "",
         date: new Date(2024, 6, 25),
-        content: "CONTENT",
+        content: "",
         href: "/news/3"
     }
 ]
