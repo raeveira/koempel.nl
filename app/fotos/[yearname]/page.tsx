@@ -38,7 +38,7 @@ export default function PhotoPage() {
   }, []);
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-yellow-400">
       <main className="flex-grow">
         <div className="p-4">
           <h1 className="text-2xl font-bold mb-4">Foto Galerij</h1>

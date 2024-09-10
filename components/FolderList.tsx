@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { ImageModal } from '@/components/ImagesModal';
+import { ChevronsLeft } from 'lucide-react'
 
 interface ImageComment {
     src: string;
@@ -49,10 +50,10 @@ const FolderList: React.FC<FolderListProps> = ({ foldersData }) => {
     };
 
     const renderFolders = (folders: FolderData[]) => (
-        <div className="grid grid-cols-1 gap-4 max-h-[calc(100svh-300px)] overflow-y-auto overflow-x-hidden">
+        <div className="grid grid-cols-1 gap-4 max-h-[calc(100svh-300px)] overflow-y-auto overflow-x-hidden bg-black p-3 rounded-sm">
             {folders.length > 0 ? (
                 folders.map((folder) => (
-                    <div key={folder.folderPath} className="border p-4 h-max">
+                    <div key={folder.folderPath} className="border p-4 h-max bg-yellow-400 rounded-md">
                         <h3
                             className="text-lg font-semibold mb-2 cursor-pointer"
                             onClick={() => handleFolderClick(folder)}
@@ -93,7 +94,9 @@ const FolderList: React.FC<FolderListProps> = ({ foldersData }) => {
                         <Button
                             onClick={handleBackClick}
                             variant={'link'}
+                            className='text-xl hover:underline'
                         >
+                            <ChevronsLeft />
                             Terug naar vorige
                         </Button>
                         <h2 className="text-xl font-bold text-right flex-1">Afbeeldingen binnen {currentFolder.folder}</h2>
@@ -117,7 +120,7 @@ const FolderList: React.FC<FolderListProps> = ({ foldersData }) => {
                                         <img
                                             src={image.src}
                                             alt={`Image ${index}`}
-                                            className="w-full h-auto object-cover"
+                                            className="w-full h-auto object-cover rounded-md  hover:scale-105 transition-all duration-150"
                                         />
                                         {image.comments && image.comments.length > 0 && (
                                             <div className="absolute bottom-0 left-0 bg-gray-800 text-white p-2 opacity-0 group-hover:opacity-75 w-full">
