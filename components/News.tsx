@@ -2,6 +2,7 @@ import { latestNews } from '@/lib/news'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import Link from 'next/link'
+import { Fragment } from 'react'
 
 
 export default function NewsComponent() {
@@ -11,7 +12,7 @@ export default function NewsComponent() {
         <h2 className="text-3xl font-bold mb-6">Laatste nieuws</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {latestNews.map((news, index) => (
-            <>
+            <Fragment key={index}>
               {news.title != '' && (
                 <Card key={index}>
                   <CardHeader>
@@ -23,7 +24,7 @@ export default function NewsComponent() {
                   </CardContent>
                 </Card>
               )}
-            </>
+            </Fragment>
           ))}
         </div>
       </div>
