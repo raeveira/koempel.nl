@@ -1,8 +1,9 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { ScrollArea } from '@/components/ui/scroll-area'
+import { Button } from '@/components/ui/button'
 
-// Define the structure of our content
 type ContentItem = {
   title: string
   content: string
@@ -13,7 +14,6 @@ type ContentCategory = {
   items: ContentItem[]
 }
 
-// Sample data structure (you would replace this with your actual content)
 const contentData: ContentCategory[] = [
   {
     name: "Columns Frank Booth",
@@ -99,55 +99,41 @@ export default function KPDOverige() {
   }, [])
 
   return (
-    <div className="flex bg-gray-100" style={{ height: contentHeight }}>
-      <div className="w-1/3 p-4 border-r overflow-auto bg-black text-yellow-400 custom-scrollbar">
-        <h1 className="text-2xl font-bold mb-6 text-center">Roda JC Fan Zone</h1>
+    <div className="flex flex-col md:flex-row bg-gray-100" style={{ height: contentHeight }}>
+      <ScrollArea className="w-full md:w-1/3 p-4 border-r bg-black text-yellow-400 max-md:max-h-[40%] max-md:flex-1">
+        <h1 className="text-xl md:text-2xl font-bold mb-6 text-center">Roda JC Fan Zone</h1>
         {contentData.map((category, index) => (
           <div key={index} className="mb-6">
-            <h2 className="text-lg font-bold mb-2 bg-yellow-400 text-black py-1 px-2 rounded">{category.name}</h2>
+            <h2 className="text-base md:text-lg font-bold mb-2 bg-yellow-400 text-black py-1 px-2 rounded">{category.name}</h2>
             {category.items.map((item, itemIndex) => (
-              <button
+              <Button
                 key={itemIndex}
-                className="w-full text-left px-2 py-1 text-sm hover:bg-yellow-400 hover:text-black focus:outline-none focus:ring-2 focus:ring-yellow-400 mb-1 rounded transition duration-150 ease-in-out"
+                variant="ghost"
+                className="w-full justify-start px-2 py-1 text-xs md:text-sm hover:bg-yellow-400 hover:text-black focus:ring-2 focus:ring-yellow-400 mb-1 rounded transition duration-150 ease-in-out"
                 onClick={() => setSelectedContent(item)}
               >
                 {item.title}
-              </button>
+              </Button>
             ))}
           </div>
         ))}
-      </div>
-      <div className="w-2/3 p-4 bg-yellow-400 overflow-auto custom-scrollbar">
+      </ScrollArea>
+      <ScrollArea className="w-full md:w-2/3 p-4 bg-yellow-400 max-md:flex-1">
         {selectedContent ? (
-          <div className="bg-white shadow-md rounded-lg p-6 border-4 border-black">
-            <h2 className="text-xl font-bold mb-4 text-black">{selectedContent.title}</h2>
-            <div className="text-gray-800 whitespace-pre-wrap text-sm">{selectedContent.content}</div>
+          <div className="bg-white shadow-md rounded-lg p-4 md:p-6 border-4 border-black">
+            <h2 className="text-lg md:text-xl font-bold mb-4 text-black">{selectedContent.title}</h2>
+            <div className="text-gray-800 whitespace-pre-wrap text-xs md:text-sm">{selectedContent.content}</div>
           </div>
         ) : (
           <div className="text-center text-black mt-10">
-            <svg className="mx-auto w-16 h-16 mb-4" fill="currentColor" viewBox="0 0 20 20">
+            <svg className="mx-auto w-12 h-12 md:w-16 md:h-16 mb-4" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
             </svg>
-            <p className="text-xl font-bold">Select an item to view its content</p>
-            <p className="mt-2">Explore the Roda JC fan articles!</p>
+            <p className="text-lg md:text-xl font-bold">Select an item to view its content</p>
+            <p className="mt-2 text-sm md:text-base">Explore the Roda JC fan articles!</p>
           </div>
         )}
-      </div>
-      <style jsx global>{`
-        .custom-scrollbar::-webkit-scrollbar {
-          width: 10px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-track {
-          background: #000000;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-          background: #fbbf24;
-          border-radius: 5px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-          background: #f59e0b;
-        }
-      `}</style>
+      </ScrollArea>
     </div>
   )
 }
