@@ -54,7 +54,7 @@ export default function LastMatches() {
                 const response = await fetch(`${url}?${params}`, {
                     method: 'GET',
                     headers: {
-                        'X-RapidAPI-Key': process.env.NEXT_PUBLIC_RAPIDAPI_KEY as string,
+                        'X-RapidAPI-Key': '44dfcf0a82msh4268d80d4b0e5f7p1ebafbjsn7fd1037d4055' as string,
                         'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
                     }
                 });

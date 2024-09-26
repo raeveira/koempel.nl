@@ -12,7 +12,7 @@ export async function GET() {
     const response = await fetch(url, {
       method: "GET",
       headers: {
-        'x-rapidapi-key': process.env.RAPIDAPI_KEY,
+        'x-rapidapi-key': '44dfcf0a82msh4268d80d4b0e5f7p1ebafbjsn7fd1037d4055',
         'x-rapidapi-host': 'api-football-v1.p.rapidapi.com'
       }
     });
