@@ -2,12 +2,6 @@ import { NextResponse } from 'next/server';
 
 export async function GET() {
   try {
-    if (!process.env.RAPIDAPI_KEY) {
-      throw new Error('RAPIDAPI_KEY is not defined in environment variables');
-    }
-
-    console.log('Using API Key:', process.env.RAPIDAPI_KEY.substring(0, 5) + '...');
-
     const url = "https://api-football-v1.p.rapidapi.com/v3/standings?league=89&season=2024";
     console.log('Fetching from URL:', url);
 
