@@ -1,5 +1,6 @@
 import NewsComponent from "@/components/News"
 import UpcomingMatches from "@/components/UpcomingMatches"
+import LastMatches from "@/components/LastMatches"
 import Image from "next/image"
 
 export default function Main() {
@@ -25,6 +26,7 @@ export default function Main() {
 
         <NewsComponent />
         <UpcomingMatches />
+        <LastMatches />
 
       </main>
     </div>

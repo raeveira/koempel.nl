@@ -86,6 +86,9 @@ export default function Header() {
                                 <NavigationMenuLink href="/overige" className="hover:underline">Overige</NavigationMenuLink>
                             </NavigationMenuItem>
                             <NavigationMenuItem>
+                                <NavigationMenuLink href="/football-standings" className="hover:underline">Stand</NavigationMenuLink>
+                            </NavigationMenuItem>
+                            <NavigationMenuItem>
                                 <NavigationMenuTrigger className="flex items-center space-x-3 pl-0 ml-0 relative">
                                     <span className={"hover:underline text-base"}>Transfers</span>
                                 </NavigationMenuTrigger>

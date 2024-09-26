@@ -1,10 +1,19 @@
 'use client'
 
 import { useEffect, useState } from "react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table"
 
 interface Team {
   rank: number;
-  team: { id: number; name: string };
+  team: { id: number; name: string; logo: string };
   all: { played: number; win: number; draw: number; lose: number };
   points: number;
 }
@@ -16,22 +25,40 @@ export default function LiveStandings() {
 
   const fetchStandings = async () => {
     try {
-      const res = await fetch("/api/standings");
-      const data = await res.json();
-      console.log('Client-side data:', data);
+      const [standingsRes, teamsRes] = await Promise.all([
+        fetch("/api/standings"),
+        fetch("/api/teams")
+      ]);
 
-      if (!res.ok) {
-        throw new Error(`Failed to fetch standings: ${res.status} ${res.statusText}. ${data.error || ''}`);
+      const standingsData = await standingsRes.json();
+      const teamsData = await teamsRes.json();
+
+      if (!standingsRes.ok) {
+        throw new Error(`Failed to fetch standings: ${standingsRes.status} ${standingsRes.statusText}. ${standingsData.error || ''}`);
+      }
+
+      if (!teamsRes.ok) {
+        throw new Error(`Failed to fetch teams: ${teamsRes.status} ${teamsRes.statusText}. ${teamsData.error || ''}`);
       }
 
       if (
-        data.response &&
-        data.response.length > 0 &&
-        data.response[0].league &&
-        data.response[0].league.standings &&
-        data.response[0].league.standings.length > 0
+        standingsData.response &&
+        standingsData.response.length > 0 &&
+        standingsData.response[0].league &&
+        standingsData.response[0].league.standings &&
+        standingsData.response[0].league.standings.length > 0
       ) {
-        setStandings(data.response[0].league.standings[0]);
+        const standingsWithLogos = standingsData.response[0].league.standings[0].map((team: Team) => {
+          const matchingTeam = teamsData.response.find((t: any) => t.team.id === team.team.id);
+          return {
+            ...team,
+            team: {
+              ...team.team,
+              logo: matchingTeam ? matchingTeam.team.logo : ''
+            }
+          };
+        });
+        setStandings(standingsWithLogos);
       } else {
         throw new Error("No standings data available in the expected format");
       }
@@ -60,32 +87,40 @@ export default function LiveStandings() {
       <h1 className="text-2xl font-bold mb-4 text-center">Keuken Kampioen Divisie Live Standings</h1>
       {standings.length > 0 ? (
         <div className="overflow-x-auto">
-          <table className="w-full border-collapse border border-gray-300">
-            <thead>
-              <tr className="bg-gray-100">
-                <th className="border border-gray-300 p-2">Position</th>
-                <th className="border border-gray-300 p-2">Team</th>
-                <th className="border border-gray-300 p-2">Played</th>
-                <th className="border border-gray-300 p-2">Won</th>
-                <th className="border border-gray-300 p-2">Draw</th>
-                <th className="border border-gray-300 p-2">Lost</th>
-                <th className="border border-gray-300 p-2">Points</th>
-              </tr>
-            </thead>
-            <tbody>
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead className="w-[100px]">Plaats</TableHead>
+                <TableHead>Team</TableHead>
+                <TableHead>Gespeeld</TableHead>
+                <TableHead>Win</TableHead>
+                <TableHead>Gelijk</TableHead>
+                <TableHead>Verloren</TableHead>
+                <TableHead>Punten</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
               {standings.map((team) => (
-                <tr key={team.team.id} className="hover:bg-gray-50">
-                  <td className="border border-gray-300 p-2">{team.rank}</td>
-                  <td className="border border-gray-300 p-2">{team.team.name}</td>
-                  <td className="border border-gray-300 p-2">{team.all.played}</td>
-                  <td className="border border-gray-300 p-2">{team.all.win}</td>
-                  <td className="border border-gray-300 p-2">{team.all.draw}</td>
-                  <td className="border border-gray-300 p-2">{team.all.lose}</td>
-                  <td className="border border-gray-300 p-2">{team.points}</td>
-                </tr>
+                <TableRow key={team.team.id}>
+                  <TableCell>{team.rank}</TableCell>
+                  <TableCell>
+                    <div className="flex items-center space-x-2">
+                      <Avatar className="h-8 w-8">
+                        <AvatarImage src={team.team.logo} alt={`${team.team.name} logo`} />
+                        <AvatarFallback>{team.team.name.substring(0, 2)}</AvatarFallback>
+                      </Avatar>
+                      <span>{team.team.name}</span>
+                    </div>
+                  </TableCell>
+                  <TableCell>{team.all.played}</TableCell>
+                  <TableCell>{team.all.win}</TableCell>
+                  <TableCell>{team.all.draw}</TableCell>
+                  <TableCell>{team.all.lose}</TableCell>
+                  <TableCell>{team.points}</TableCell>
+                </TableRow>
               ))}
-            </tbody>
-          </table>
+            </TableBody>
+          </Table>
         </div>
       ) : (
         <p className="text-center">No standings available at this time.</p>
