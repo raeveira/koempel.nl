@@ -17,9 +17,13 @@ interface Match {
   homeTeam: Team['team'];
   awayTeam: Team['team'];
   date: Date;
+  score: {
+    home: number;
+    away: number;
+  };
 }
 
-export default function UpcomingMatches() {
+export default function LastMatches() {
     const [matches, setMatches] = useState<Match[]>([]);
     const [teams, setTeams] = useState<Team[]>([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -43,7 +47,7 @@ export default function UpcomingMatches() {
             const url = 'https://api-football-v1.p.rapidapi.com/v3/fixtures';
             const params = new URLSearchParams({
                 team: '414', // Roda JC team ID
-                next: '4'    // Next 4 matches
+                last: '4'    // Last 4 matches
             });
 
             try {
@@ -71,7 +75,11 @@ export default function UpcomingMatches() {
                         name: match.teams.away.name,
                         logo: match.teams.away.logo,
                     },
-                    date: new Date(match.fixture.date)
+                    date: new Date(match.fixture.date),
+                    score: {
+                        home: match.goals.home,
+                        away: match.goals.away
+                    }
                 }));
 
                 setMatches(formattedMatches);
@@ -101,7 +109,7 @@ export default function UpcomingMatches() {
     return (
         <section className="py-12">
             <div className="container mx-auto px-4">
-                <h2 className="text-3xl font-bold mb-6">Aankomende wedstrijden</h2>
+                <h2 className="text-3xl font-bold mb-6">Laatste wedstrijden</h2>
                 <div className="space-y-4">
                     {matches.map((match, i) => (
                         <Card key={i}>
@@ -114,7 +122,7 @@ export default function UpcomingMatches() {
                                     <span className="font-bold text-center">{match.homeTeam.name}</span>
                                 </div>
                                 <div className="text-center w-1/3">
-                                    <p className="font-bold mb-2">VS</p>
+                                    <p className="font-bold mb-2">{match.score.home} - {match.score.away}</p>
                                     <p className="text-sm text-gray-500">{match.date.toLocaleDateString('nl-NL', {
                                         day: 'numeric',
                                         month: 'long',
@@ -141,7 +149,7 @@ function LoadingSkeleton() {
     return (
         <section className="py-12">
             <div className="container mx-auto px-4">
-                <h2 className="text-3xl font-bold mb-6">Aankomende wedstrijden</h2>
+                <h2 className="text-3xl font-bold mb-6">Laatste wedstrijden</h2>
                 <div className="space-y-4">
                     {[...Array(4)].map((_, i) => (
                         <Card key={i}>
@@ -151,7 +159,7 @@ function LoadingSkeleton() {
                                     <Skeleton className="h-4 w-24" />
                                 </div>
                                 <div className="text-center w-1/3">
-                                    <Skeleton className="h-6 w-8 mx-auto mb-2" />
+                                    <Skeleton className="h-6 w-16 mx-auto mb-2" />
                                     <Skeleton className="h-4 w-32 mx-auto" />
                                 </div>
                                 <div className="flex flex-col items-center space-y-2 w-1/3">
