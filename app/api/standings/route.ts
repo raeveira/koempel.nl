@@ -10,7 +10,8 @@ export async function GET() {
       headers: {
         'x-rapidapi-key': '44dfcf0a82msh4268d80d4b0e5f7p1ebafbjsn7fd1037d4055',
         'x-rapidapi-host': 'api-football-v1.p.rapidapi.com'
-      }
+      },
+      next: { revalidate: 86400 } 
     });
 
     console.log('Response status:', response.status);
