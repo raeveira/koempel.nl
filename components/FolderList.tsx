@@ -50,50 +50,41 @@ export default function FolderList({ foldersData }: FolderListProps) {
   }
 
   const renderFolders = (folders: FolderData[]) => (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-h-[calc(100svh-200px)] sm:max-h-[calc(100svh-300px)] overflow-y-auto overflow-x-hidden bg-black p-3 rounded-sm">
-      {folders.length > 0 ? (
-        folders.map((folder) => (
-          <div key={folder.folderPath} className="border p-4 h-max bg-yellow-400 rounded-md">
-            <h3
-              className="text-lg font-semibold mb-2 cursor-pointer"
-              onClick={() => handleFolderClick(folder)}
-            >
-              {folder.folder} <br />
-              {folder.home && (
-                <>
-                  <span>Thuis: {folder.home}</span>
-                  <br />
-                </>
-              )}
-              {folder.out && (
-                <>
-                  <span>Uit: {folder.out}</span>
-                  <br />
-                </>
-              )}
-            </h3>
-            {folder.subfolders.length > 0 && (
-              <p
-                className="text-blue-500 hover:underline hover:cursor-pointer"
-                onClick={() => handleFolderClick(folder)}
-              >
-                Bevat {folder.subfolders.length} submappen
-              </p>
-            )}
-            {folder.images.length > 0 && (
-              <p
-                className="text-blue-500 hover:underline hover:cursor-pointer"
-                onClick={() => handleFolderClick(folder)}
-              >
-                Bevat {folder.images.length} afbeeldingen
-              </p>
-            )}
-          </div>
-        ))
-      ) : (
-        <p className="text-white">Geen mappen beschikbaar</p>
-      )}
-    </div>
+      <div className="flex flex-col gap-2 max-h-[calc(100svh-500px)] sm:max-h-[calc(100svh-500px)] overflow-y-auto overflow-x-hidden p-3 rounded-sm">
+        {folders.length > 0 ? (
+            folders.map((folder) => (
+                  <div key={folder.folderPath} className="border p-4 h-max rounded-md cursor-pointer" onClick={() => handleFolderClick(folder)}>
+                    <h3 className="text-lg font-semibold mb-2">
+                      {folder.folder} <br />
+                      {folder.home && (
+                          <>
+                            <span>Thuis: {folder.home}</span>
+                            <br />
+                          </>
+                      )}
+                      {folder.out && (
+                          <>
+                            <span>Uit: {folder.out}</span>
+                            <br />
+                          </>
+                      )}
+                    </h3>
+                    {folder.subfolders.length > 0 && (
+                        <p className="text-zinc-500">
+                          Bevat {folder.subfolders.length} submappen
+                        </p>
+                    )}
+                    {folder.images.length > 0 && (
+                        <p className="text-zinc-500">
+                          Bevat {folder.images.length} afbeeldingen
+                        </p>
+                    )}
+                </div>
+            ))
+        ) : (
+            <p className="text-white">Geen mappen beschikbaar</p>
+        )}
+      </div>
   )
 
   return (
@@ -119,7 +110,7 @@ export default function FolderList({ foldersData }: FolderListProps) {
           )}
 
           <div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 max-h-[calc(100svh-200px)] sm:max-h-[calc(100svh-300px)] overflow-y-auto overflow-x-hidden">
+            <div className="flex flex-col sm:flex-row flex-wrap gap-2 max-h-[calc(100svh-200px)] sm:max-h-[calc(100svh-300px)] overflow-y-auto overflow-x-hidden">
               {currentFolder.images.length > 0 ? (
                 currentFolder.images.map((image, index) => (
                   <div
