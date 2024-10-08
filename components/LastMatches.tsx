@@ -28,6 +28,7 @@ export default function LastMatches() {
     const [teams, setTeams] = useState<Team[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+    const maxRetries = 3;
 
     useEffect(() => {
         const fetchTeams = async () => {
@@ -43,7 +44,7 @@ export default function LastMatches() {
             }
         };
 
-        const fetchMatches = async () => {
+        const fetchMatches = async (retries = 0) => {
             const url = 'https://api-football-v1.p.rapidapi.com/v3/fixtures';
             const params = new URLSearchParams({
                 team: '414', // Roda JC team ID
@@ -84,7 +85,12 @@ export default function LastMatches() {
 
                 setMatches(formattedMatches);
             } catch (err) {
-                setError('Error fetching matches. Please try again later.');
+                if (retries < maxRetries) {
+                    console.warn(`Retrying fetch matches... Attempt ${retries + 1}`);
+                    await fetchMatches(retries + 1);
+                } else {
+                    setError('Tijdelijk geen laatste wedstrijden beschikbaar, probeer het later nog eens.');
+                }
             } finally {
                 setIsLoading(false);
             }
@@ -103,7 +109,7 @@ export default function LastMatches() {
     }
 
     if (error) {
-        return <div className="text-center text-red-500">{error}</div>;
+        return <div className="text-center text-zinc-400 p-3 m-3 md:mx-60 border border-dashed rounded-md">{error}</div>;
     }
 
     return (
