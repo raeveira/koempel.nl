@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { ScrollArea } from '@/components/ui/scroll-area'
 import { Button } from '@/components/ui/button'
 
 type ContentItem = {
@@ -87,8 +86,8 @@ export default function KPDOverige() {
 
   useEffect(() => {
     const updateHeight = () => {
-      const navbarHeight = 110 // Height of your navbar
-      const footerHeight = 50 // Approximate height of your footer, adjust as needed
+      const navbarHeight = 110
+      const footerHeight = 50
       const availableHeight = window.innerHeight - navbarHeight - footerHeight
       setContentHeight(`${availableHeight}px`)
     }
@@ -99,17 +98,17 @@ export default function KPDOverige() {
   }, [])
 
   return (
-    <div className="flex flex-col md:flex-row bg-gray-100" style={{ height: contentHeight }}>
-      <ScrollArea className="w-full md:w-1/3 p-4 border-r bg-black text-yellow-400 max-md:max-h-[40%] max-md:flex-1">
+    <div className="flex flex-col md:flex-row" style={{ height: contentHeight }}>
+      <div className="w-full md:w-1/3 p-4 border-r border-black max-md:max-h-[40%] max-md:flex-1 overflow-y-auto">
         <h1 className="text-xl md:text-2xl font-bold mb-6 text-center">Roda JC Fan Zone</h1>
         {contentData.map((category, index) => (
           <div key={index} className="mb-6">
-            <h2 className="text-base md:text-lg font-bold mb-2 bg-yellow-400 text-black py-1 px-2 rounded">{category.name}</h2>
+            <h2 className="text-base md:text-lg font-bold mb-2 border-b border-black py-1">{category.name}</h2>
             {category.items.map((item, itemIndex) => (
               <Button
                 key={itemIndex}
                 variant="ghost"
-                className="w-full justify-start px-2 py-1 text-xs md:text-sm hover:bg-yellow-400 hover:text-black focus:ring-2 focus:ring-yellow-400 mb-1 rounded transition duration-150 ease-in-out"
+                className="w-full justify-start px-2 py-1 text-xs md:text-sm hover:bg-black hover:text-white focus:ring-2 focus:ring-black mb-1 rounded transition duration-150 ease-in-out"
                 onClick={() => setSelectedContent(item)}
               >
                 {item.title}
@@ -117,15 +116,15 @@ export default function KPDOverige() {
             ))}
           </div>
         ))}
-      </ScrollArea>
-      <ScrollArea className="w-full md:w-2/3 p-4 bg-yellow-400 max-md:flex-1">
+      </div>
+      <div className="w-full md:w-2/3 p-4 bg-white max-md:flex-1 overflow-y-auto">
         {selectedContent ? (
-          <div className="bg-white shadow-md rounded-lg p-4 md:p-6 border-4 border-black">
-            <h2 className="text-lg md:text-xl font-bold mb-4 text-black">{selectedContent.title}</h2>
-            <div className="text-gray-800 whitespace-pre-wrap text-xs md:text-sm">{selectedContent.content}</div>
+          <div className="bg-white shadow-md rounded-lg p-4 md:p-6 border border-black">
+            <h2 className="text-lg md:text-xl font-bold mb-4">{selectedContent.title}</h2>
+            <div className="whitespace-pre-wrap text-xs md:text-sm">{selectedContent.content}</div>
           </div>
         ) : (
-          <div className="text-center text-black mt-10">
+          <div className="text-center mt-10">
             <svg className="mx-auto w-12 h-12 md:w-16 md:h-16 mb-4" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
             </svg>
@@ -133,7 +132,7 @@ export default function KPDOverige() {
             <p className="mt-2 text-sm md:text-base">Explore the Roda JC fan articles!</p>
           </div>
         )}
-      </ScrollArea>
+      </div>
     </div>
   )
 }

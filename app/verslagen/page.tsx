@@ -134,19 +134,19 @@ export default function KPDOverige() {
   
     return (
       <div className="flex bg-gray-100" style={{ height: contentHeight }}>
-        <div className="w-1/3 p-4 border-r overflow-auto bg-black text-yellow-400 custom-scrollbar">
+        <div className="w-1/3 p-4 border-r overflow-auto bg-white text-black custom-scrollbar">
           <h1 className="text-2xl font-bold mb-6 text-center">Roda JC Fan Zone</h1>
           
           {/* Dropdown to select year */}
           <div className="mb-6">
-            <label htmlFor="year-select" className="block text-sm font-medium mb-2 text-yellow-400">
+            <label htmlFor="year-select" className="block text-sm font-medium mb-2 text-black">
               Kies een jaar
             </label>
             <select
               id="year-select"
               value={selectedYear}
               onChange={handleYearChange}
-              className="w-full px-2 py-1 bg-black text-yellow-400 border border-yellow-400 rounded focus:outline-none focus:ring-2 focus:ring-yellow-400 mb-4"
+              className="w-full px-2 py-1 bg-white text-black border border-black rounded focus:outline-none focus:ring-2 focus:ring-black mb-4"
             >
               {contentData.map((category, index) => (
                 <option key={index} value={category.name}>
@@ -161,11 +161,11 @@ export default function KPDOverige() {
             .filter((category) => category.name === selectedYear)
             .map((category, index) => (
               <div key={index} className="mb-6">
-                <h2 className="text-lg font-bold mb-2 bg-yellow-400 text-black py-1 px-2 rounded">{category.name}</h2>
+                <h2 className="text-lg font-bold mb-2 bg-white text-black py-1 px-2 rounded">{category.name}</h2>
                 {category.items.map((item, itemIndex) => (
                   <button
                     key={itemIndex}
-                    className="w-full text-left px-2 py-1 text-sm hover:bg-yellow-400 hover:text-black focus:outline-none focus:ring-2 focus:ring-yellow-400 mb-1 rounded transition duration-150 ease-in-out"
+                    className="w-full text-left px-2 py-1 text-sm hover:bg-black hover:text-white focus:outline-none focus:ring-2 focus:ring-white mb-1 rounded transition duration-150 ease-in-out"
                     onClick={() => setSelectedContent(item)}
                   >
                     {item.title}
@@ -175,7 +175,7 @@ export default function KPDOverige() {
             ))}
         </div>
   
-        <div className="w-2/3 p-4 bg-yellow-400 overflow-auto custom-scrollbar">
+        <div className="w-2/3 p-4 bg-white overflow-auto custom-scrollbar">
           {selectedContent ? (
             <div className="bg-white shadow-md rounded-lg p-6 border-4 border-black">
               <h2 className="text-xl font-bold mb-4 text-black">{selectedContent.title}</h2>
@@ -191,22 +191,6 @@ export default function KPDOverige() {
             </div>
           )}
         </div>
-  
-        <style jsx global>{`
-          .custom-scrollbar::-webkit-scrollbar {
-            width: 10px;
-          }
-          .custom-scrollbar::-webkit-scrollbar-track {
-            background: #000000;
-          }
-          .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: #fbbf24;
-            border-radius: 5px;
-          }
-          .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-            background: #f59e0b;
-          }
-        `}</style>
       </div>
     )
   }
