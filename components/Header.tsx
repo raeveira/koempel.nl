@@ -3,8 +3,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import axios from 'axios';
-import { AlignJustify } from 'lucide-react';  // Import the icon
+import api from '@/lib/axiosInstance';
+import { AlignJustify } from 'lucide-react';
 import {
     NavigationMenu,
     NavigationMenuContent,
@@ -23,7 +23,7 @@ export default function Header() {
     useEffect(() => {
         async function fetchGalleryYears() {
             try {
-                const response = await axios.get('/api/folders');
+                const response = await api.get('/api/folders');
                 if (response.data) {
                     setGalleryYears(response.data);
                 } else {
@@ -93,11 +93,11 @@ export default function Header() {
                                     <span className={"hover:underline text-base"}>Transfers</span>
                                 </NavigationMenuTrigger>
                                 <NavigationMenuContent>
-                                <NavigationMenuLink href="/transfers/2022-2023" className="block px-4 py-2 hover:bg-gray-100">2022/2023</NavigationMenuLink>
-                                <NavigationMenuLink href="/transfers/2021-2022" className="block px-4 py-2 hover:bg-gray-100">2021/2022</NavigationMenuLink>
-                                <NavigationMenuLink href="/transfers/2020-2021" className="block px-4 py-2 hover:bg-gray-100">2020/2021</NavigationMenuLink>
-                                <NavigationMenuLink href="/transfers/2019-2020" className="block px-4 py-2 hover:bg-gray-100">2019/2020</NavigationMenuLink>
-                                <NavigationMenuLink href="/transfers/2018-2019" className="block px-4 py-2 hover:bg-gray-100">2018/2019</NavigationMenuLink>
+                                    <NavigationMenuLink href="/transfers/2022-2023" className="block px-4 py-2 hover:bg-gray-100">2022/2023</NavigationMenuLink>
+                                    <NavigationMenuLink href="/transfers/2021-2022" className="block px-4 py-2 hover:bg-gray-100">2021/2022</NavigationMenuLink>
+                                    <NavigationMenuLink href="/transfers/2020-2021" className="block px-4 py-2 hover:bg-gray-100">2020/2021</NavigationMenuLink>
+                                    <NavigationMenuLink href="/transfers/2019-2020" className="block px-4 py-2 hover:bg-gray-100">2019/2020</NavigationMenuLink>
+                                    <NavigationMenuLink href="/transfers/2018-2019" className="block px-4 py-2 hover:bg-gray-100">2018/2019</NavigationMenuLink>
                                 </NavigationMenuContent>
                             </NavigationMenuItem>
                         </NavigationMenuList>

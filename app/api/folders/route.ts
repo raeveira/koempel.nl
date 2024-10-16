@@ -23,8 +23,6 @@ interface FolderOrder {
     name: string;
     order: number;
     subFolders?: FolderOrder[];
-    home?: string;
-    out?: string;
 }
 
 const siteImagesFolderPath = path.join(process.cwd(), 'public', 'site-images');
@@ -99,8 +97,6 @@ function getFolders(foldersOrder: FolderOrder[], parentPath = ''): Folder[] {
                 subfolders: subfolders,
                 images: getImagesFromFolder(folderPath, comments),
                 order: folderOrder.order,
-                home: folderOrder.home,
-                out: folderOrder.out
             });
         }
     });
@@ -132,6 +128,8 @@ function getImagesFromFolder(directory: string, comments: { [folderPath: string]
                 const folderPath = path.relative(siteImagesFolderPath, directory).replace(/\\/g, '/');
                 const folderComments = comments[folderPath] || [];
                 const imageComments = folderComments.filter(comment => comment.src === path.basename(file));
+
+                console.log('Image comments:', imageComments);
 
                 images.push({
                     src: imageSrc,
